@@ -1,41 +1,17 @@
-<div class="card-container">
-  <h1 x-large class="sample-content">Твой контент тут</h1>
-
-  <div>
-    For material design components use the <a href="https://github.com/AngularClass/angular2-webpack-starter/tree/material2"><b>material2</b></a> branch
+<div id="main">
+  <div id="content">
+    <h1 id="page-name">Каталог товаров</h1>
+    <ul class="gallery">
+      <li *ngFor="let product of products">
+        <a href="product/{{product.pid}}.html">
+          <img src="/assets/{{product.image}}" alt="*{{product.description}}" height="150"/>
+        </a>
+        <h3><a href="/product/{{product.pid}}.html">{{product.name}}</a></h3>
+        <span class="price">Цена: {{product.price}} &#8376;</span>
+        <form action="http://localhost:8080/cart/add?{{product.pid}}" method="post" class="addtocart">
+          <button class="buy" type="submit" id="{{product.pid}}">Купить</button>
+        </form>
+      </li>
+    </ul>
   </div>
-
-  <hr>
-
-  <div>
-    For hot module reloading run
-    <pre>npm run start:hmr</pre>
-  </div>
-
-  <hr>
-
-  <div>
-    <h4>Local State</h4>
-
-    <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
-
-      <input
-        [value]="localState.value"
-        (input)="localState.value = $event.target.value"
-        placeholder="Submit Local State to App State"
-        autofocus>
-
-      <button md-raised-button color="primary">Submit Value</button>
-    </form>
-    <!--
-        <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
-        Rather than wiring up two-way data-binding ourselves with [value] and (input)
-        we can use Angular's [(ngModel)] syntax
-        <input type="text" name="textInput" [(ngModel)]="localState.value" autofocus>
-      -->
-
-    <pre>this.localState = {{ localState | json }}</pre>
-
-  </div>
-
 </div>

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { AppState } from '../app.service';
 import { Title } from './title';
 import { XLarge } from './x-large';
+import { ProductsService } from '../services';
 
 @Component({
   // The selector is what angular internally uses
@@ -26,22 +27,17 @@ import { XLarge } from './x-large';
   templateUrl: './home.template.html'
 })
 export class Home {
-  // Set our default values
-  localState = { value: '' };
-  // TypeScript public modifiers
-  constructor(public appState: AppState, public title: Title) {
+  products;
 
+  // TypeScript public modifiers
+  constructor(public appState: AppState, public title: Title, private productsService: ProductsService ) {
+    this.productsService.getTenProducts()
+      .subscribe(res => this.products = res);
   }
 
   ngOnInit() {
     console.log('hello `Home` component');
     // this.title.getData().subscribe(data => this.data = data);
-  }
-
-  submitState(value) {
-    console.log('submitState', value);
-    this.appState.set('value', value);
-    this.localState.value = '';
   }
 
 }

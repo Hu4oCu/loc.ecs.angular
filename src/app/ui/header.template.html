@@ -1,0 +1,24 @@
+ <header>
+  <div class="header">
+    <form action="#" class="search-form">
+      <fieldset>
+        <span class="text-wrap"><input type="text" class="text" placeholder="Что ищем? :)" /></span>
+        <input type="submit" class="submit" value="&#128270;"/>
+      </fieldset>
+    </form>
+    <form action="/auth/signin" class="login-form" method="post">
+      <fieldset>
+        <a href="/auth/signup" class="button sign-up">Регистрация</a>
+        <button type="submit" class="button sign-in">Войти</button>
+        <span class="text-wrap"><input type="password" name="password" class="text" placeholder="Пароль" /></span>
+        <span class="text-wrap"><input type="text" name="username" class="text" placeholder="Логин" /></span>
+      </fieldset>
+    </form>
+    <ul>
+      <li><a href="/">На главную</a></li>
+    </ul>
+    <div>
+      <a href="/cart" style="float:right;" id="cart_count">Нет товаров</a>
+    </div>
+  </div>
+</header>

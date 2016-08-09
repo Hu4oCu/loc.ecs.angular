@@ -160,8 +160,10 @@ module.exports = {
        *
        */
       {
+/*        test: /\.css$/,
+        loaders: ['to-string-loader', 'css-loader']*/
         test: /\.css$/,
-        loaders: ['to-string-loader', 'css-loader']
+        loader: 'css-to-string-loader!css-loader'
       },
 
       /* Raw loader support for *.html
@@ -173,7 +175,12 @@ module.exports = {
         test: /\.html$/,
         loader: 'raw-loader',
         exclude: [helpers.root('src/index.html')]
+      },
+      {
+        test: /\.png$/,
+        loader: 'file-loader'
       }
+
 
     ]
 
