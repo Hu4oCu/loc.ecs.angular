@@ -3,14 +3,22 @@ import { ApiService } from './api';
 
 @Injectable()
 export class CartsService {
-  path: string = "carts";
+  path: string = null;
   constructor(private apiService: ApiService) {}
 
   getCart() {
+    this.path = "carts"
     return this.apiService.get(this.path);
   }
 
   getCount() {
-    return this.apiService.get(this.path + "/count");
+    this.path = "carts/count";
+    return this.apiService.get(this.path);
   }
+
+  addToCart(pid) {
+    this.path = "carts/add?pid=" + pid;
+    return this.apiService.post(this.path);
+  }
+
 }

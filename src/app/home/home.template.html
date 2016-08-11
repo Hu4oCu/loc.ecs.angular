@@ -7,7 +7,8 @@
       </a>
       <h3><a href="/product/{{product.product_id}}.html">{{product.name}}</a></h3>
       <span class="price">Цена: {{product.price}} &#8376;</span>
-      <form action="http://localhost:8080/cart/add?{{product.product_id}}" method="post" class="addtocart">
+      <form (submit)="addToCart(product.product_id)"
+        class="addtocart">
         <button class="buy" type="submit" id="{{product.product_id}}">Купить</button>
       </form>
     </li>

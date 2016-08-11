@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { AppState } from '../app.service';
 import { Title } from './title';
 import { XLarge } from './x-large';
-import { ProductsService } from '../services';
+import { ProductsService, CartsService } from '../services';
 
 @Component({
   // The selector is what angular internally uses
@@ -30,7 +30,7 @@ export class Home {
   products;
 
   // TypeScript public modifiers
-  constructor(public appState: AppState, public title: Title, private productsService: ProductsService ) {
+  constructor(public title: Title, private productsService: ProductsService, private cartsService: CartsService) {
     this.productsService.getTenProducts()
       .subscribe(res => this.products = res);
   }
@@ -38,6 +38,10 @@ export class Home {
   ngOnInit() {
     console.log('hello `Home` component');
     // this.title.getData().subscribe(data => this.data = data);
+  }
+
+  addToCart(pid) {
+    this.cartsService.addToCart(pid).subscribe(res => res);
   }
 
 }

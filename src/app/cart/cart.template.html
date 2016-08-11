@@ -16,14 +16,14 @@
     </div>
     <div class="product-details">
       <div class="product-title">{{cart.product.name}}</div>
-      <p class="product-description">Product ID: {{cart.product_id}}</p>
+      <p class="product-description">Product ID: {{cart.product.product_id}}</p>
     </div>
     <div class="product-price">{{cart.product.price}}</div>
     <div class="product-quantity">
       <input type="number" value="{{cart.count}}" min="1">
     </div>
     <div class="product-removal">
-      <button type="submit" class="remove-product" id="{{cart.product_id}}">
+      <button type="submit" class="remove-product" id="{{cart.product.product_id}}">
         Удалить
       </button>
     </div>
