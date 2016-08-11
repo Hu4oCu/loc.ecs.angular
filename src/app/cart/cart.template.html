@@ -10,24 +10,24 @@
     <label class="product-line-price">Всего</label>
   </div>
 
-  <div class="product" ngFor="let cart of carts">
+  <div class="product" *ngFor="let cart of carts">
     <div class="product-image">
-      <img th:src="@{/resources/{src}(src=*{cart.image})}">
+      <img src="/assets/{{cart.product.image}}">
     </div>
     <div class="product-details">
-      <div class="product-title">[[*{cart.name}]]</div>
-      <p class="product-description">Product ID: [[*{cart.pid}]]</p>
+      <div class="product-title">{{cart.product.name}}</div>
+      <p class="product-description">Product ID: {{cart.product_id}}</p>
     </div>
-    <div class="product-price">[[*{cart.price}]]</div>
+    <div class="product-price">{{cart.product.price}}</div>
     <div class="product-quantity">
-      <input type="number" value="1" min="1">
+      <input type="number" value="{{cart.count}}" min="1">
     </div>
     <div class="product-removal">
-      <button type="submit" class="remove-product" th:id="*{cart.pid}">
+      <button type="submit" class="remove-product" id="{{cart.product_id}}">
         Удалить
       </button>
     </div>
-    <div class="product-line-price">[[*{cart.price}]]</div>
+    <div class="product-line-price">{{cart.product.price}}</div>
   </div>
 
   <div class="totals">
