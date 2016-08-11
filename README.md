@@ -1,2 +1,2 @@
-# loc.magazine
-Simple project based on Spring Framework
+# loc.ecs.angular
+Angular 2
