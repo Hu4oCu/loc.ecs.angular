@@ -9,13 +9,14 @@ import { bootstrap } from '@angular/platform-browser-dynamic';
 import { PLATFORM_PROVIDERS } from './platform/browser';
 import { ENV_PROVIDERS, decorateComponentRef } from './platform/environment';
 
-
 /*
 * App Component
 * our top level component that holds all of our components
 */
 import { App, APP_PROVIDERS } from './app';
-import { HTTP_PROVIDERS } from '@angular/http'
+import { HTTP_PROVIDERS } from '@angular/http';
+import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { bind } from '@angular/core';
 
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
@@ -28,16 +29,13 @@ export function main(initialHmrState?: any): Promise<any> {
     ...PLATFORM_PROVIDERS,
     ...ENV_PROVIDERS,
     ...APP_PROVIDERS,
-    ...HTTP_PROVIDERS
+    ...HTTP_PROVIDERS,
+    bind(LocationStrategy).toClass(PathLocationStrategy)
   ])
   .then(decorateComponentRef)
   .catch(err => console.error(err));
 
 }
-
-
-
-
 
 /*
  * Vendors
@@ -45,7 +43,6 @@ export function main(initialHmrState?: any): Promise<any> {
  * You can also import them in vendors to ensure that they are bundled in one file
  * Also see custom-typings.d.ts as you also need to do `typings install x` where `x` is your module
  */
-
 
 /*
  * Hot Module Reload

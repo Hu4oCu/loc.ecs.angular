@@ -23,7 +23,9 @@ import { Footer } from "./ui/footer-component"
     <header-component></header-component>
 
     <main>
-      <router-outlet></router-outlet>
+      <div id="main">
+        <router-outlet></router-outlet>
+      </div>
     </main>
 
     <footer-component></footer-component>

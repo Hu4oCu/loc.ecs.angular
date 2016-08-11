@@ -1,14 +1,4 @@
-/*styles for home content only*/
 /* main */
-#main {
-  width:1100px;
-  margin:30px auto 0;
-  padding-bottom: 40px;
-  min-height: 100%;
-}
-#content {
-  margin: 0 auto;
-}
 #content #page-name {
   color: #000;
   margin-bottom: 25px;

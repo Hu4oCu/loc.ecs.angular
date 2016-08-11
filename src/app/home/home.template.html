@@ -1,17 +1,15 @@
-<div id="main">
-  <div id="content">
-    <h1 id="page-name">Каталог товаров</h1>
-    <ul class="gallery">
-      <li *ngFor="let product of products">
-        <a href="product/{{product.pid}}.html">
-          <img src="/assets/{{product.image}}" alt="*{{product.description}}" height="150"/>
-        </a>
-        <h3><a href="/product/{{product.pid}}.html">{{product.name}}</a></h3>
-        <span class="price">Цена: {{product.price}} &#8376;</span>
-        <form action="http://localhost:8080/cart/add?{{product.pid}}" method="post" class="addtocart">
-          <button class="buy" type="submit" id="{{product.pid}}">Купить</button>
-        </form>
-      </li>
-    </ul>
-  </div>
+<div id="content">
+  <h1 id="page-name">Каталог товаров</h1>
+  <ul class="gallery">
+    <li *ngFor="let product of products">
+      <a href="product/{{product.product_id}}.html">
+        <img src="/assets/{{product.image}}" alt="*{{product.description}}" height="150"/>
+      </a>
+      <h3><a href="/product/{{product.product_id}}.html">{{product.name}}</a></h3>
+      <span class="price">Цена: {{product.price}} &#8376;</span>
+      <form action="http://localhost:8080/cart/add?{{product.product_id}}" method="post" class="addtocart">
+        <button class="buy" type="submit" id="{{product.product_id}}">Купить</button>
+      </form>
+    </li>
+  </ul>
 </div>

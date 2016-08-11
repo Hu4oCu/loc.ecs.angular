@@ -3,7 +3,7 @@
     <form action="#" class="search-form">
       <fieldset>
         <span class="text-wrap"><input type="text" class="text" placeholder="Что ищем? :)" /></span>
-        <input type="submit" class="submit" value="&#128270;"/>
+        <input type="submit" class="submit" value="🔍"/>
       </fieldset>
     </form>
     <form action="/auth/signin" class="login-form" method="post">
@@ -18,7 +18,11 @@
       <li><a href="/">На главную</a></li>
     </ul>
     <div>
-      <a href="/cart" style="float:right;" id="cart_count">Нет товаров</a>
+      <!--<a [ngif]="product.count == 0" href="/cart" style="float:right;" id="cart_count">Нет товаров</a>-->
+      <a
+        href="/cart"
+        style="float:right"
+        id="cart_count">Товаров: {{product.count}}</a>
     </div>
   </div>
 </header>
