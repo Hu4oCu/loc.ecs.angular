@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-import { AppState } from '../app.service';
 import { Title } from './title';
 import { XLarge } from './x-large';
 import { ProductsService, CartsService } from '../services';
@@ -28,6 +27,8 @@ import { ProductsService, CartsService } from '../services';
 })
 export class Home {
   products;
+  carts;
+  cart_res;
 
   // TypeScript public modifiers
   constructor(public title: Title, private productsService: ProductsService, private cartsService: CartsService) {
@@ -37,11 +38,12 @@ export class Home {
 
   ngOnInit() {
     console.log('hello `Home` component');
-    // this.title.getData().subscribe(data => this.data = data);
+    this.cartsService.getCart()
+      .subscribe(res => this.carts = res);
   }
 
   addToCart(pid) {
-    this.cartsService.addToCart(pid).subscribe(res => res);
+    this.cartsService.addToCart(pid).subscribe(res => this.cart_res = res);
   }
 
 }

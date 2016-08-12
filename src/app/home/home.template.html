@@ -3,13 +3,14 @@
   <ul class="gallery">
     <li *ngFor="let product of products">
       <a href="product/{{product.product_id}}.html">
-        <img src="/assets/{{product.image}}" alt="*{{product.description}}" height="150"/>
+        <img src="/assets/{{product.image}}" alt="{{product.description}}" height="150"/>
       </a>
       <h3><a href="/product/{{product.product_id}}.html">{{product.name}}</a></h3>
       <span class="price">Цена: {{product.price}} &#8376;</span>
-      <form (submit)="addToCart(product.product_id)"
+      <form
+        (submit)="addToCart(product.product_id)"
         class="addtocart">
-        <button class="buy" type="submit" id="{{product.product_id}}">Купить</button>
+        <button class="buy" type="submit">Купить</button>
       </form>
     </li>
   </ul>

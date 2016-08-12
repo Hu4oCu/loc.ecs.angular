@@ -10,7 +10,7 @@ export class ApiService {
     Accept: 'application/json',
   });
 
-  api_url: string = 'http://localhost:8080/';
+  api_url: string = 'http://localhost:8080';
 
   constructor (private http: Http) {}
 
@@ -37,11 +37,7 @@ export class ApiService {
   }
 
   post(path: string, body): Observable<any> {
-    return this.http.post(
-        `${this.api_url}${path}`,
-        JSON.stringify(body),
-        { headers: this.headers }
-    )
+    return this.http.post(`${this.api_url}${path}`, body, { headers: this.headers })
       .map(this.checkForError)
       .catch(err => Observable.throw(err))
       .map(this.getJson)
