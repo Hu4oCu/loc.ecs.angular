@@ -15,6 +15,7 @@ console.log('`Cart` component loaded asynchronously');
 })
 export class Cart {
   carts;
+  productCount: string;
 
   constructor(private cartsService: CartsService) {
     this.cartsService.getCart()
@@ -23,6 +24,14 @@ export class Cart {
 
   ngOnInit() {
     console.log('hello `Cart` component');
+  }
+
+  removefromcart(uid, pid) {
+    document.getElementById(pid).parentElement.parentElement.remove();
+    this.cartsService.removeFromCart(uid, pid)
+      .subscribe(res => {this.productCount = res.toString();
+        document.getElementById("cart_count").innerHTML="Товаров: " + this.productCount;
+      });
   }
 
 }

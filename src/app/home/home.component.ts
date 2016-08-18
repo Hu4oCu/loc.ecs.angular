@@ -27,8 +27,8 @@ import { ProductsService, CartsService } from '../services';
 })
 export class Home {
   products;
-  carts;
   cart_res;
+  carts;
 
   // TypeScript public modifiers
   constructor(public title: Title, private productsService: ProductsService, private cartsService: CartsService) {
@@ -39,11 +39,26 @@ export class Home {
   ngOnInit() {
     console.log('hello `Home` component');
     this.cartsService.getCart()
-      .subscribe(res => this.carts = res);
+      .subscribe(res => {
+        this.carts = res;
+        for (var cart of this.carts) {
+          document.getElementById(cart.product.product_id).innerHTML="В корзине";
+        }
+      })
   }
 
-  addToCart(pid) {
-    this.cartsService.addToCart(pid).subscribe(res => this.cart_res = res);
+  addToCart(uid, pid) {
+    if (document.getElementById(pid).innerHTML == "Купить") {
+      this.cartsService.addToCart(uid, pid)
+        .subscribe(res => {
+          this.cart_res = res;
+          document.getElementById(pid).innerHTML = "В корзине";
+          document.getElementById("cart_count").innerHTML = "Товаров: " + this.cart_res.cart_size;
+        });
+    }
+    else {
+      document.location.pathname="/cart";
+    }
   }
 
 }

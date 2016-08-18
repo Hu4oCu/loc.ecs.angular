@@ -9,18 +9,13 @@ import { CartsService } from '../services';
 
 export class Header {
   carts;
-  product;
+  productCount;
 
   constructor(private cartsService: CartsService) {
     this.cartsService.getCart()
       .subscribe(res => this.carts = res);
-    this.product =  this.cartsService.getCount()
-      .subscribe(res => this.product = res);
-  }
-
-  getCount() {
-    this.product =  this.cartsService.getCount()
-      .subscribe(res => this.product = res);
+    this.productCount =  this.cartsService.getCount()
+      .subscribe(res => this.productCount = res);
   }
 
 }

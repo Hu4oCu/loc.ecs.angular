@@ -1,9 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
-import { AppState } from './app.service';
-
 import { Header } from "./ui/header.component";
-import { Footer } from "./ui/footer-component"
+import { Footer } from "./ui/footer.component"
 
 /*
  * App Component
@@ -32,15 +30,9 @@ import { Footer } from "./ui/footer-component"
   `
 })
 export class App {
-  name = 'Angular 2 Webpack Starter';
-
-  constructor(
-    public appState: AppState) {
-
-  }
 
   ngOnInit() {
-    console.log('Initial App State', this.appState.state);
+
   }
 
 }

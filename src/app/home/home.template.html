@@ -8,9 +8,9 @@
       <h3><a href="/product/{{product.product_id}}.html">{{product.name}}</a></h3>
       <span class="price">Цена: {{product.price}} &#8376;</span>
       <form
-        (submit)="addToCart(product.product_id)"
+        (submit)="addToCart(1, product.product_id)"
         class="addtocart">
-        <button class="buy" type="submit">Купить</button>
+        <button class="buy" type="submit" id="{{product.product_id}}">Купить</button>
       </form>
     </li>
   </ul>

@@ -17,9 +17,15 @@ export class CartsService {
     return this.apiService.get(this.path);
   }
 
-  addToCart(pid) {
+  addToCart(uid, pid) {
     this.path = "/carts/add";
-    this.body = JSON.stringify({user_id: 1, product_id: pid, quantity: 1});
+    this.body = JSON.stringify({user_id: uid, product_id: pid, quantity: 1});
+    return this.apiService.post(this.path, this.body);
+  }
+
+  removeFromCart(uid,pid) {
+    this.path = "/carts/remove";
+    this.body = JSON.stringify({user_id: uid, product_id: pid});
     return this.apiService.post(this.path, this.body);
   }
 

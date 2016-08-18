@@ -22,7 +22,7 @@
     <div class="product-quantity">
       <input type="number" value="{{cart.count}}" min="1">
     </div>
-    <div class="product-removal">
+    <div class="product-removal" (click)="removefromcart(1, cart.product.product_id)">
       <button type="submit" class="remove-product" id="{{cart.product.product_id}}">
         Удалить
       </button>
