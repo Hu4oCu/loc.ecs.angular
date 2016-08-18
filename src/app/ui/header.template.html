@@ -18,11 +18,8 @@
       <li><a href="/">На главную</a></li>
     </ul>
     <div>
-      <!--<a [ngif]="product.count == 0" href="/cart" style="float:right;" id="cart_count">Нет товаров</a>-->
-      <a
-        href="/cart"
-        style="float:right"
-        id="cart_count">Товаров: {{productCount.count}}</a>
+      <a *ngIf="productCount.count == 0" href="/cart" style="float:right;" id="cart_count">Нет товаров</a>
+      <a *ngIf="productCount.count > 0" href="/cart" style="float:right" id="cart_count">Товаров: {{productCount.count}}</a>
     </div>
   </div>
 </header>

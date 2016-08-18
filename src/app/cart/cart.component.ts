@@ -29,8 +29,14 @@ export class Cart {
   removefromcart(uid, pid) {
     document.getElementById(pid).parentElement.parentElement.remove();
     this.cartsService.removeFromCart(uid, pid)
-      .subscribe(res => {this.productCount = res.toString();
-        document.getElementById("cart_count").innerHTML="Товаров: " + this.productCount;
+      .subscribe(res => {
+        this.productCount = res.toString();
+        if (this.productCount.includes("0")) {
+          document.getElementById("cart_count").innerHTML="Нет товаров";
+        }
+        else {
+          document.getElementById("cart_count").innerHTML = "Товаров: " + this.productCount;
+        }
       });
   }
 
