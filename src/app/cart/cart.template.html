@@ -18,22 +18,22 @@
       <div class="product-title">{{cart.product.name}}</div>
       <p class="product-description">Product ID: {{cart.product.product_id}}</p>
     </div>
-    <div class="product-price">{{cart.product.price}}</div>
+    <div #price class="product-price">{{cart.product.price}}</div>
     <div class="product-quantity">
-      <input type="number" value="{{cart.count}}" min="1">
+      <input #quant (change)="recalcPrice(quant.value, price.innerHTML, total)" type="number" value="{{cart.count}}" min="1">
     </div>
     <div class="product-removal" (click)="removefromcart(1, cart.product.product_id)">
       <button type="submit" class="remove-product" id="{{cart.product.product_id}}">
         Удалить
       </button>
     </div>
-    <div class="product-line-price">{{cart.product.price}}</div>
+    <div #total class="product-line-price">{{cart.product.price}}</div>
   </div>
 
   <div class="totals">
     <div class="totals-item totals-item-total">
       <label>Общая стоимость</label>
-      <div class="totals-value" id="cart-total">Total</div>
+      <div class="totals-value" id="cart-total">0</div>
     </div>
   </div>
 

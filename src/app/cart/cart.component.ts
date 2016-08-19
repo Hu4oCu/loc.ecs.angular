@@ -16,10 +16,17 @@ console.log('`Cart` component loaded asynchronously');
 export class Cart {
   carts;
   productCount: string;
+  totalPrice: number = 0;
 
   constructor(private cartsService: CartsService) {
     this.cartsService.getCart()
-      .subscribe(res => this.carts = res);
+      .subscribe(res => {
+        this.carts = res;
+        for (var cart of this.carts) {
+          this.totalPrice += cart.product.price;
+        }
+        document.getElementById("cart-total").innerHTML=this.totalPrice.toString();
+      });
   }
 
   ngOnInit() {
@@ -27,10 +34,10 @@ export class Cart {
   }
 
   removefromcart(uid, pid) {
-    document.getElementById(pid).parentElement.parentElement.remove();
     this.cartsService.removeFromCart(uid, pid)
       .subscribe(res => {
         this.productCount = res.toString();
+        document.getElementById(pid).parentElement.parentElement.remove();
         if (this.productCount.includes("0")) {
           document.getElementById("cart_count").innerHTML="Нет товаров";
         }
@@ -38,6 +45,10 @@ export class Cart {
           document.getElementById("cart_count").innerHTML = "Товаров: " + this.productCount;
         }
       });
+  }
+
+  recalcPrice(quantity, price, total) {
+    total.innerHTML=quantity * price;
   }
 
 }
