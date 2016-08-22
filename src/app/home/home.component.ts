@@ -48,7 +48,9 @@ export class Home {
   }
 
   addToCart(uid, pid) {
-    if (document.getElementById(pid).innerHTML == "Купить") {
+    let btnText = document.getElementById(pid).innerHTML;
+    if (btnText == "Купить") {
+      document.getElementById(pid).innerHTML="Подождите";
       this.cartsService.addToCart(uid, pid)
         .subscribe(res => {
           this.cart_res = res;
@@ -56,7 +58,7 @@ export class Home {
           document.getElementById("cart_count").innerHTML = "Товаров: " + this.cart_res.cart_size;
         });
     }
-    else {
+    else if (btnText == "В корзине") {
       document.location.pathname="/cart";
     }
   }
