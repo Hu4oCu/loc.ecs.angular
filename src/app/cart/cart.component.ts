@@ -31,20 +31,23 @@ export class Cart {
   }
 
   removefromcart(uid, pid) {
-    this.cartsService.removeFromCart(uid, pid)
-      .subscribe(res => {
-        this.cartsService.getCart().subscribe(res => this.carts = res);
-        this.productCount = res.toString();
-        document.getElementById(pid).parentElement.parentElement.remove();
-        if (this.productCount.includes("0")) {
-          document.getElementById("cart_count").innerHTML="Нет товаров";
-          document.getElementById("cart-total").innerHTML="0";
-        }
-        else {
-          document.getElementById("cart_count").innerHTML = "Товаров: " + this.productCount;
-          this.calcTotal(pid, 0);
-        }
-      });
+    if (document.getElementById(pid).innerText == "Удалить") {
+      document.getElementById(pid).innerHTML = "Подождите";
+      this.cartsService.removeFromCart(uid, pid)
+        .subscribe(res => {
+          this.cartsService.getCart().subscribe(res => this.carts = res);
+          this.productCount = res.toString();
+          document.getElementById(pid).parentElement.parentElement.remove();
+          if (this.productCount.includes("0")) {
+            document.getElementById("cart_count").innerHTML = "Нет товаров";
+            document.getElementById("cart-total").innerHTML = "0";
+          }
+          else {
+            document.getElementById("cart_count").innerHTML = "Товаров: " + this.productCount;
+            this.calcTotal(pid, 0);
+          }
+        });
+    }
   }
 
   recalcPrice(quantity, price, total, pid) {
